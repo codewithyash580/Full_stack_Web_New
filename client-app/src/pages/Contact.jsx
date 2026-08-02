@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -11,10 +11,18 @@ gsap.registerPlugin(ScrollTrigger);
 function Contact() {
   const contactRef = useRef(null);
 
+  // Form data
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-    
-
       gsap.from(".contact-subtitle", {
         y: 40,
         opacity: 0,
@@ -37,18 +45,14 @@ function Contact() {
         delay: 0.4,
       });
 
-
       gsap.from(".contact-info-card", {
         scrollTrigger: {
           trigger: ".contact-container",
           start: "top 80%",
         },
-
         x: -80,
         opacity: 0,
-
         duration: 1,
-
         ease: "power3.out",
       });
 
@@ -57,54 +61,35 @@ function Contact() {
           trigger: ".contact-container",
           start: "top 80%",
         },
-
         x: 80,
         opacity: 0,
-
         duration: 1,
-
         delay: 0.2,
-
         ease: "power3.out",
       });
-
-    
 
       gsap.from(".contact-field", {
         scrollTrigger: {
           trigger: ".contact-form-card",
           start: "top 80%",
         },
-
         y: 30,
-
         opacity: 0,
-
         stagger: 0.15,
-
         duration: 0.6,
-
         delay: 0.4,
-
         ease: "power3.out",
       });
-
-      
 
       gsap.from(".contact-social-link", {
         scrollTrigger: {
           trigger: ".contact-socials",
           start: "top 90%",
         },
-
         scale: 0,
-
         opacity: 0,
-
         stagger: 0.15,
-
         duration: 0.5,
-
         ease: "back.out(1.7)",
       });
     }, contactRef);
@@ -112,33 +97,61 @@ function Contact() {
     return () => ctx.revert();
   }, []);
 
-  // ========================================
-  // FORM SUBMIT
-  // ========================================
+  // Input change handle
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  const handleSubmit = (e) => {
+  // Form submit
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    alert(
-      "Thank you for contacting me! I will get back to you soon."
-    );
+    setLoading(true);
 
-    e.target.reset();
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/contact`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(
+          "Thank you for contacting me! I will get back to you soon."
+        );
+
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        alert(data.message || "Something went wrong.");
+      }
+    } catch (error) {
+      console.error("Contact form error:", error);
+      alert("Unable to send message. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <main
-      className="contact-page"
-      ref={contactRef}
-    >
-  
-
+    <main className="contact-page" ref={contactRef}>
       <ThreeHero />
 
-      
-
       <section className="contact-content">
-
         <p className="contact-subtitle">
           Get In Touch
         </p>
@@ -153,12 +166,9 @@ function Contact() {
           Feel free to send me a message.
         </p>
 
-
         <div className="contact-container">
 
-
           <div className="contact-info-card">
-
             <h2>
               Contact Information
             </h2>
@@ -169,11 +179,8 @@ function Contact() {
               opportunities.
             </p>
 
-
             {/* Email */}
-
             <div className="contact-info-item">
-
               <span className="contact-icon">
                 ✉
               </span>
@@ -187,14 +194,10 @@ function Contact() {
                   yashchauhan@example.com
                 </a>
               </div>
-
             </div>
 
-
             {/* Location */}
-
             <div className="contact-info-item">
-
               <span className="contact-icon">
                 📍
               </span>
@@ -208,14 +211,10 @@ function Contact() {
                   India
                 </span>
               </div>
-
             </div>
 
-
             {/* Availability */}
-
             <div className="contact-info-item">
-
               <span className="contact-icon">
                 ●
               </span>
@@ -229,12 +228,9 @@ function Contact() {
                   Available for opportunities
                 </span>
               </div>
-
             </div>
 
-
             <div className="contact-socials">
-
               <a
                 className="contact-social-link"
                 href="https://github.com/codewithyash580"
@@ -252,108 +248,95 @@ function Contact() {
               >
                 LinkedIn
               </a>
-
             </div>
-
           </div>
 
-
           <div className="contact-form-card">
-
             <h2>
               Send Me a Message
             </h2>
 
-            <form
-              onSubmit={handleSubmit}
-            >
+            <form onSubmit={handleSubmit}>
 
-            
-
+              {/* Name */}
               <div className="contact-field">
-
                 <label>
                   Your Name
                 </label>
 
                 <input
                   type="text"
-                  placeholder = " Enter your name "
+                  name="name"
+                  placeholder="Enter your name"
+                  value={formData.name}
+                  onChange={handleChange}
                   required
                 />
-
               </div>
 
-
               {/* Email */}
-
               <div className="contact-field">
-
                 <label>
                   Your Email
                 </label>
 
                 <input
                   type="email"
-                  placeholder = " Enter your email "
+                  name="email"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                 />
-
               </div>
 
-
               {/* Subject */}
-
-              <div className=" contact-field ">
-
+              <div className="contact-field">
                 <label>
                   Subject
                 </label>
 
                 <input
                   type="text"
-                  placeholder = " Enter subject "
+                  name="subject"
+                  placeholder="Enter subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                   required
                 />
-
               </div>
 
-
               {/* Message */}
-
               <div className="contact-field">
-
                 <label>
                   Message
                 </label>
 
                 <textarea
                   rows="6"
-                  placeholder = " Write your message... "
+                  name="message"
+                  placeholder="Write your message..."
+                  value={formData.message}
+                  onChange={handleChange}
                   required
                 />
-
               </div>
 
-
               {/* Submit */}
-
               <button
                 type="submit"
                 className="contact-submit"
+                disabled={loading}
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
                 <span>→</span>
               </button>
 
             </form>
-
           </div>
 
         </div>
-
       </section>
-
     </main>
   );
 }
