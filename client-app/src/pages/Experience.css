@@ -1,0 +1,501 @@
+
+
+.experience-page {
+  position: relative;
+
+  min-height: calc(100vh - 70px);
+
+  padding: 100px 7%;
+
+  background: #020617;
+
+  color: #ffffff;
+
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+
+/* ========================================
+   THREE.JS BACKGROUND
+======================================== */
+
+.experience-page .three-hero {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: -1;
+
+  opacity: 0.3;
+
+  pointer-events: none;
+}
+
+
+.experience-content {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+
+.experience-subtitle {
+  margin-bottom: 15px;
+
+  color: #a78bfa;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+
+.experience-title {
+  margin: 0;
+
+  font-size: clamp(45px, 6vw, 72px);
+
+  line-height: 1.1;
+
+  font-weight: 700;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #a78bfa,
+    #8b5cf6
+  );
+
+  
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+.experience-description {
+  max-width: 650px;
+
+  margin: 25px auto 80px;
+
+  color: #94a3b8;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+}
+
+
+
+.experience-timeline {
+  position: relative;
+
+  width: 100%;
+
+  padding: 30px 0;
+}
+
+
+.timeline-line {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  left: 50%;
+
+  width: 3px;
+
+  transform: translateX(-50%);
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #8b5cf6 10%,
+    #a78bfa 50%,
+    #8b5cf6 90%,
+    transparent
+  );
+
+  transform-origin: top center;
+
+  box-shadow:
+    0 0 15px
+    rgba(139, 92, 246, 0.5);
+}
+
+
+.experience-item {
+  position: relative;
+
+  display: flex;
+
+  width: 50%;
+
+  margin-bottom: 80px;
+}
+
+
+.experience-item.left {
+  justify-content: flex-end;
+
+  padding-right: 50px;
+}
+
+
+.experience-item.right {
+  margin-left: 50%;
+
+  padding-left: 50px;
+}
+
+
+.timeline-dot {
+  position: absolute;
+
+  top: 35px;
+
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #020617;
+
+  border: 3px solid #8b5cf6;
+
+  border-radius: 50%;
+
+  z-index: 5;
+
+  box-shadow:
+    0 0 20px
+    rgba(139, 92, 246, 0.7);
+}
+
+
+/* Left dot */
+
+.experience-item.left
+.timeline-dot {
+  right: -10px;
+}
+
+
+.experience-item.right
+.timeline-dot {
+  left: -10px;
+}
+
+
+.timeline-dot span {
+  width: 6px;
+  height: 6px;
+
+  background: #a78bfa;
+
+  border-radius: 50%;
+}
+
+
+.experience-card {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 450px;
+
+  padding: 30px;
+
+  text-align: left;
+
+  background:
+    rgba(15, 23, 42, 0.65);
+
+  border: 1px solid
+    rgba(139, 92, 246, 0.25);
+
+  border-radius: 18px;
+
+  backdrop-filter: blur(15px);
+
+  -webkit-backdrop-filter: blur(15px);
+
+  transform-style: preserve-3d;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.experience-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: -100px;
+  right: -100px;
+
+  width: 220px;
+  height: 220px;
+
+  background:
+    rgba(139, 92, 246, 0.12);
+
+  border-radius: 50%;
+
+  filter: blur(60px);
+
+  pointer-events: none;
+
+  transition: 0.4s ease;
+}
+
+.experience-card:hover {
+  border-color:
+    rgba(139, 92, 246, 0.8);
+
+  box-shadow:
+    0 25px 60px
+    rgba(139, 92, 246, 0.15);
+}
+
+.experience-card:hover::before {
+  transform: scale(1.5);
+
+  background:
+    rgba(139, 92, 246, 0.2);
+}
+
+
+.experience-year {
+  display: inline-block;
+
+  margin-bottom: 15px;
+
+  padding: 6px 12px;
+
+  color: #c4b5fd;
+
+  background:
+    rgba(139, 92, 246, 0.12);
+
+  border: 1px solid
+    rgba(139, 92, 246, 0.3);
+
+  border-radius: 20px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.experience-card h2 {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0 0 8px;
+
+  color: #f8fafc;
+
+  font-size: 22px;
+
+  line-height: 1.4;
+}
+
+
+.experience-card h3 {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0 0 18px;
+
+  color: #a78bfa;
+
+  font-size: 15px;
+
+  font-weight: 500;
+}
+
+.experience-card p {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0 0 22px;
+
+  color: #94a3b8;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+
+.experience-tech {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+
+.tech-tag {
+  padding: 6px 10px;
+
+  color: #cbd5e1;
+
+  background:
+    rgba(30, 41, 59, 0.7);
+
+  border: 1px solid
+    rgba(71, 85, 105, 0.6);
+
+  border-radius: 6px;
+
+  font-size: 11px;
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.experience-card:hover
+.tech-tag {
+  border-color:
+    rgba(139, 92, 246, 0.5);
+
+  color: #c4b5fd;
+}
+
+
+@media (max-width: 900px) {
+
+  .experience-page {
+    padding: 80px 5%;
+  }
+
+  .experience-description {
+    margin-bottom: 60px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .experience-page {
+    padding: 70px 5%;
+  }
+
+  .experience-title {
+    font-size: 42px;
+  }
+
+  .experience-description {
+    font-size: 14px;
+
+    margin-bottom: 50px;
+  }
+
+
+  /* Move timeline to left */
+
+  .timeline-line {
+    left: 15px;
+
+    transform: none;
+  }
+
+  .experience-item,
+  .experience-item.left,
+  .experience-item.right {
+    width: 100%;
+
+    margin-left: 0;
+
+    padding-left: 50px;
+
+    padding-right: 0;
+
+    justify-content: flex-start;
+  }
+
+
+  /* All dots left */
+
+  .experience-item.left
+  .timeline-dot,
+  .experience-item.right
+  .timeline-dot {
+    left: 5px;
+
+    right: auto;
+  }
+
+
+
+  .experience-card {
+    max-width: 100%;
+
+    padding: 25px;
+  }
+
+
+  .experience-card h2 {
+    font-size: 20px;
+  }
+
+}
+
+
+@media (max-width: 400px) {
+
+  .experience-title {
+    font-size: 36px;
+  }
+
+  .experience-subtitle {
+    font-size: 12px;
+
+    letter-spacing: 2px;
+  }
+
+  .experience-card {
+    padding: 22px;
+  }
+
+}

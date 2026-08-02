@@ -1,0 +1,93 @@
+
+
+.three-hero {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 55%;
+  height: 100%;
+
+  z-index: 0;
+
+  overflow: hidden;
+
+  pointer-events: auto;
+}
+
+
+.three-hero canvas {
+  width: 100% !important;
+  height: 100% !important;
+
+  display: block;
+}
+
+
+.three-hero::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 350px;
+  height: 350px;
+
+  transform: translate(-50%, -50%);
+
+  background: rgba(139, 92, 246, 0.08);
+
+  border-radius: 50%;
+
+  filter: blur(80px);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+
+@media (max-width: 1000px) {
+
+  .three-hero {
+    width: 50%;
+  }
+
+}
+
+
+@media (max-width: 800px) {
+
+  .three-hero {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0.45;
+  }
+
+  .three-hero::after {
+    width: 250px;
+    height: 250px;
+
+    filter: blur(60px);
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .three-hero {
+    opacity: 0.3;
+  }
+
+}

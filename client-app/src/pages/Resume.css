@@ -1,0 +1,182 @@
+.resume-page {
+  min-height: calc(100vh - 70px);
+  padding: 80px 7%;
+  background: #020617;
+  color: white;
+}
+
+.resume-page > h1 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.resume-intro {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  text-align: center;
+  color: #94a3b8;
+  line-height: 1.7;
+}
+
+
+
+.resume-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.download-btn,
+.print-btn {
+  padding: 12px 22px;
+  border-radius: 7px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.download-btn {
+  background: #7c3aed;
+  color: white;
+}
+
+.download-btn:hover {
+  background: #6d28d9;
+  transform: translateY(-2px);
+}
+
+.print-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid #7c3aed;
+}
+
+.print-btn:hover {
+  background: #7c3aed;
+}
+
+
+
+.resume-preview {
+  max-width: 850px;
+  margin: auto;
+  padding: 50px;
+  background: #f8fafc;
+  color: #0f172a;
+  border-radius: 5px;
+}
+
+
+
+.resume-header {
+  text-align: center;
+  padding-bottom: 25px;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+.resume-header h2 {
+  font-size: 32px;
+}
+
+.resume-header p {
+  color: #64748b;
+  margin: 8px 0 15px;
+}
+
+.resume-contact {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+}
+
+
+.resume-section {
+  margin-top: 30px;
+}
+
+.resume-section h3 {
+  color: #6d28d9;
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.resume-section h4 {
+  margin: 15px 0 5px;
+}
+
+.resume-section p {
+  color: #475569;
+  line-height: 1.6;
+}
+
+
+.resume-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.resume-skills span {
+  padding: 7px 12px;
+  background: #e2e8f0;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+
+
+@media (max-width: 600px) {
+  .resume-page {
+    padding: 60px 5%;
+  }
+
+  .resume-page > h1 {
+    font-size: 32px;
+  }
+
+  .resume-actions {
+    flex-direction: column;
+  }
+
+  .download-btn,
+  .print-btn {
+    text-align: center;
+  }
+
+  .resume-preview {
+    padding: 25px;
+  }
+
+  .resume-contact {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+
+
+@media print {
+  .navbar,
+  .resume-page > h1,
+  .resume-intro,
+  .resume-actions,
+  .footer {
+    display: none;
+  }
+
+  .resume-page {
+    padding: 0;
+    background: white;
+  }
+
+  .resume-preview {
+    max-width: 100%;
+    box-shadow: none;
+  }
+}
