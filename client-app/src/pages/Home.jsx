@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 
-import ThreeHero from "../components/ThreeHero";
+import ThreeHero from "../Components/ThreeHero";
 
 import "./Home.css";
 

@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import ThreeHero from "../components/ThreeHero";
+import ThreeHero from "../Components/ThreeHero";
 
 import "./Contact.css";
 
