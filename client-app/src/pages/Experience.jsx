@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import ThreeHero from "../Components/ThreeHero";
+
 
 import "./Experience.css";
 
@@ -217,7 +217,7 @@ function Experience() {
     >
       
 
-      <ThreeHero />
+      
 
       
 
