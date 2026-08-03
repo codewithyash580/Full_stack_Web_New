@@ -9,13 +9,13 @@ import Experience from "./pages/Experience";
 import Contact from "./pages/Contact";
 import Resume from "./pages/Resume";
 import Footer from "./Footers/Footer";
-import ThreeHero from "./Components/ThreeHero"
+
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <ThreeHero/>
+      
 
       <Routes>
         {/* Home - Default Page */}
